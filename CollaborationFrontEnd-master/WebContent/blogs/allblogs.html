@@ -1,0 +1,22 @@
+<link rel="stylesheet"  type="text/css" href="resources/css/back2.css">
+<div ng-controller="blogController as bctrl" ng-init="bctrl.getAllBlogs()">
+<div class="container">            
+<table class="table table-bordered">
+<thead>
+      <tr>
+        <th>Blog Title</th>
+        <th>Blog Author</th>
+        <th>Date</th>
+      </tr>
+  </thead>
+   <tbody ng-controller="userController as u" ng-init="u.getAllUser()">       
+	<tr ng-repeat="b in blogs"  >
+	<td>{{b.title}}</td>
+	<td><DIV ng-repeat="userp in users" ng-if="userp.id==b.userid">{{userp.name}}</DIV></td>
+	<td>{{b.date_added | date:'dd/MM/yyyy'}}</td>
+	<td><a href="" ng-click="bctrl.showBlog(b.id)">View Or Comment</a></td>
+	</tr>
+   </tbody>
+  </table>
+</div>
+</div>

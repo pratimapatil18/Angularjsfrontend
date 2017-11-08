@@ -1,0 +1,23 @@
+<link rel="stylesheet"  type="text/css" href="resources/css/back1.css">
+<div ng-controller="blogController as bctrl" >
+<div ng-show="currentUser">
+<form ng-submit="bctrl.saveBlog()" method="post">
+<div class="container">
+<div class="form-group">
+    <label for="title">Blog Title:</label>
+    <input type="title" placeholder="Blog Title" ng-model="blog.title" class="form-control" id="title" >
+  </div>
+
+<div class="form-group">
+    <label for="description">Blog Description:</label>
+    <input type="description" placeholder="Blog Description" ng-model="blog.description" class="form-control" id="description">
+  </div>
+
+<button type="submit" class="btn btn-info">Submit</button>
+  </div>
+</form>
+</div>
+<div ng-show="!currentUser">
+<h1><a href="#!login"><b>Please Login First To Add New Blog!</b></a></h1>
+</div>
+</div>

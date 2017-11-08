@@ -1,0 +1,52 @@
+<nav class="navbar navbar-inverse">
+ <div class="controller" ng-controller="userController as uctrl">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">CHAT ON</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="#/!">Home</a></li>
+      
+      
+      <li class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Blog
+        <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li><a href="#!allblogs">View All Blog</a></li>
+          <li><a href="#!addblog">Add New Blog</a></li>  
+        </ul>
+      </li>
+      
+      
+      <li class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Job
+        <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+           <li><a href="#!ViewJob">View All Jobs</a></li>
+           <li ng-show="currentUser.userrole=='ADMIN'"><a href="#!AddJob">Add New Job</a></li>
+           <li ng-show="currentUser.userrole=='ADMIN'"><a href="#!managejobs">Manage Job Application</a></li>
+           <li ng-show="currentUser.userrole=='USER'"><a href="#!appliedjobs">View Applied Jobs</a></li>
+        </ul>
+      </li>
+      
+      
+      <li class="dropdown" ng-show="currentUser.userrole=='USER'">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="">Friend
+        <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li ng-show="currentUser.userrole=='USER'"><a href="#!AddFriend">Add Friends</a></li>
+          <li ng-show="currentUser.userrole=='USER'"><a href="#!friends">View All Friends and Chat</a></li>
+           <li ng-show="currentUser.userrole=='USER'"><a href="#!AcceptReq">Accept Friend Request</a></li>
+          
+        </ul>
+      </li>
+      
+      
+      <li><a href="#!register" ng-hide="currentUser"><span class="glyphicon glyphicon-user"></span> Register</a></li>
+ 	  <li><a href="#!login" ng-hide="currentUser"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+ 	  <li><a href="#!myprofile" ng-show="currentUser" class="btn btn-info btn-lg><span class="glyphicon glyphicon-user"> My Profile</span></a></li>
+ 	  <li ng-hide="!currentUser"><a href="" ng-click="uctrl.logout()">Logout</a></li>
+    </ul>
+  </div>
+</div>
+</nav>

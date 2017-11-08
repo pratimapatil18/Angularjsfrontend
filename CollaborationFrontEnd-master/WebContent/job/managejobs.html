@@ -1,0 +1,26 @@
+<div ng-controller="jobController as jctrl" ng-init="jctrl.getAllJobApplication()" class="container">
+<h1> Manage Applied Jobs</h1>
+<table class="table table-bordered"  ng-init="jctrl.getAllJobs()">
+    <thead>
+      <tr>
+        <th>Username:</th>
+        <th>Job Title:</th>
+        <th>Enter Reason:</th>
+        <th>Status:</th>
+      </tr>
+    </thead>  
+    <tbody ng-controller="userController as uctrl" ng-init="uctrl.getAllUser()">
+      <tr  ng-repeat="jobappln in selectedJobApplication" >
+      	<td ><div ng-repeat="userp in users" ng-if="userp.id==jobappln.userid">{{userp.name}}</div></td>
+      	<td ><div ng-repeat="jobp in jobs" ng-if="jobp.id==jobappln.jobid" >{{jobp.jobtitle}}</div></td>
+      	<td ng-show="jobappln.status=='P'" ><input ng-model="jobappln.reason" type="text" placeholder="Enter Reason" /></td>
+      	<td ng-show="jobappln.status=='P'" > <a href="" ng-click="jctrl.changeStatus('A',jobappln)" class="btn btn-primary"> Accept </a>
+      	<a href="" ng-click="jctrl.changeStatus('R',jobappln)" class="btn btn-primary"> Reject </a>
+      	 </td>
+      	 	<td ng-show="jobappln.status != 'P'" > {{jobappln.reason}} </td>
+      	<td ng-show="jobappln.status != 'P'" > {{jobappln.status}}</td>
+      	
+      	</tr>
+    </tbody>
+  </table>
+</div>

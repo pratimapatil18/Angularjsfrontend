@@ -1,0 +1,29 @@
+<div ng-controller="userController as uctrl" class="container">
+    <div class="row">
+        <div class="col-xs-12 col-sm-6 col-md-6">
+            <div class="well well-sm">
+                <div class="row">
+                    <div class="col-sm-6 col-md-4">
+                        <img height="100" width="100" src="resources\images\{{currentUser.imagepath}}" alt="" class="img-rounded img-responsive"/>
+                    </div>
+                    <form enctype="multipart/form-data" ng-submit="uctrl.uploadFile()">
+                    <div>
+         				<input type = "file" file-model="myfile"/>
+        				 <button type="submit">Upload image</button>
+   					   </div>
+   					</form>
+                    <div class="col-sm-6 col-md-8">
+                        <h2>
+                            {{currentUser.name}}</h2>
+                            <i class="glyphicon glyphicon-map-marker">
+                        </i>
+                        <small><cite title="address">{{currentUser.phoneno}}</cite></small>
+                        <p>
+                            <i class="glyphicon glyphicon-envelope"></i>{{currentUser.email}}
+                            <br />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,21 @@
+<div ng-controller="friendController as fCtrl" ng-init="fCtrl.getAllFriends(currentUser.id)" class="container">
+<h1>Friends</h1>
+<table ng-controller="userController as uCtrl" class="table table-hover">
+    <thead>
+      <tr>
+      	<th>Name</th>
+      </tr>
+    </thead>
+    <tbody >
+      <tr ng-repeat="u in allfriends">
+      	<td><img src="resources\images\{{friendprofile[$index].imagepath}}" height="150" width="80" alt="Image" class="img-rounded img-responsive"/></td>
+      	<td ng-if="currentUser.id==u.userid" ng-init="uCtrl.getuser(u.friendid)">{{friendprofile[$index].name}}</td>
+      	<td ng-if="currentUser.id!=u.userid" ng-init="uCtrl.getuser(u.userid)">{{friendprofile[$index].name}}</td>
+      	<td ng-show="friendprofile[$index].isOnline=='N'"><span class="glyphicon glyphicon-user "
+				style="color: gray"></span>Offline</td>
+      	<td ng-show="friendprofile[$index].isOnline=='Y'"><span class="glyphicon glyphicon-user "
+				style="color: green"></span><a href="#!chat">Online (Send a message)</a></td>
+      </tr>
+    </tbody>
+  </table>
+</div>

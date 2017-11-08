@@ -1,0 +1,39 @@
+<link rel="stylesheet"  type="text/css" href="resources/css/back.css">
+
+
+<div ng-controller="userController as uctrl" >
+<div class="container">
+<div class="row">
+<div class="page-header">
+<h1>Login Form </h1>
+<h3> Please Login Here!</h3>
+</div>
+	
+<form class="form-horizontal" role="form" ng-submit="uctrl.validate()"  method="post" >
+ 
+<div class="form-group">
+<label for="email" class="col-sm-2 control-label">UserName:</label>
+<div class="col-sm-6">
+<input type="email" name="email" class="form-control" ng-model="user.email" id="email" placeholder="Enter your Email ex:mailto@mail.com">
+</div>
+</div>
+ 
+ <div class="form-group">
+<label for="password" class="col-sm-2 control-label">Password:</label>
+<div class="col-sm-6">
+<input type="password" name="password" class="form-control" ng-model="user.password" id="password" placeholder="Enter Password">
+</div>
+</div> 
+<div class="form-group">
+<div class="col-sm-offset-2 col-sm-10">
+<button type="submit" class="btn btn-info">Login</button>
+<p class="pull-right"><a href="#!register">Not Yet Member? Sign Up Here</a></p>
+</div>
+</div>
+ </div>
+</div><!-- end for class "row" -->
+</div><!-- end for class "container" -->
+ <hr>           
+                
+                 
+                	

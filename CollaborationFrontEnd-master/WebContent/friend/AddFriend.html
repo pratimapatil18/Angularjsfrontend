@@ -1,0 +1,30 @@
+<div ng-controller="userController as uCtrl" class="container">
+<div>
+<form ng-submit="uCtrl.searchpeople()">
+      <div class="input-group">
+        <input autofocus type="text" ng-model="name" class="form-control" placeholder="Search friends(Enter Name)">
+        <div class="input-group-btn">
+          <button class="btn btn-default" type="submit">
+            <i class="glyphicon glyphicon-search"></i>
+          </button>
+        </div>
+      </div>
+</form>
+</div>
+
+<div ng-show="searchresults" ng-controller="friendController as fCtrl"  class="container">
+<table class="table table-hover">
+    <thead>
+      <tr>
+      	<th>Name</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="u in searchresults">
+      	<td><img src="resources\images\{{u.imagepath}}" height="150" width="80" alt="Image" class="img-rounded img-responsive"/></td>
+      	<td>{{u.name}}</td>
+      	<td><a href="" ng-click="fCtrl.sendreq(u.id)">Add Friend</a></td>
+      </tr>
+    </tbody>
+  </table>
+</div>

@@ -1,0 +1,31 @@
+<div ng-controller="jobController as jctrl" >
+<div class="container">
+<div class="row">
+<div class="page-header">
+<h1>ADD JOB</h1>
+</div>
+	
+<form class="form-horizontal" role="form" ng-submit="jctrl.saveJob()"  method="post" >
+ 
+<div class="form-group">
+<label for="jobtitle" class="col-sm-2 control-label">Job Title:</label>
+<div class="col-sm-6">
+<input type="text" name="jobtitle" class="form-control" ng-model="job.jobtitle" id="name" placeholder="Enter Job Title">
+</div>
+</div>
+ 
+<div class="form-group">
+<label for="jobdescription" class="col-sm-2 control-label">Job Description:</label>
+<div class="col-sm-6">
+<input type="textarea" name="jobdescription" class="form-control" ng-model="job.jobdescription" id="jobdescription" placeholder="Enter Job Description">
+</div>
+</div>
+    
+<div class="form-group">
+<div class="col-sm-offset-2 col-sm-10">
+<button type="submit" class="btn btn-primary">POST</button>
+</div>
+</div>
+ </div>
+</div><!-- end for class "row" -->
+</div><!-- end for class "container" -->

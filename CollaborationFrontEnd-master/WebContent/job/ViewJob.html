@@ -1,0 +1,23 @@
+<link rel="stylesheet"  type="text/css" href="resources/css/back4.css">
+<div class="container" ng-controller="jobController as jctrl" ng-init="jctrl.getAllJobs()">
+Search: <input type="text" ng-model="searchText" />
+<div class="container">            
+<table id="searchTextResults" class="table table-bordered">
+<thead>
+      <tr>
+        <th>Job Title</th>
+        <th>Job Description</th>
+        
+      </tr>
+  </thead>
+   <tbody>       
+	<tr ng-repeat="j in jobs | filter:searchText" >
+	<td>{{j.jobtitle}}</td>
+	<td>{{j.jobdescription }}</td>
+	<td ng-show="currentUser.userrole=='USER'"><a href="" ng-click="jctrl.apply(j.id)" class="btn btn-info">Apply</a></td>
+	<td ng-show="!currentUser"><a href="#!login"  class="btn btn-info">Login to Apply</a></td>
+	</tr>
+   </tbody>
+  </table>
+</div>
+</div>

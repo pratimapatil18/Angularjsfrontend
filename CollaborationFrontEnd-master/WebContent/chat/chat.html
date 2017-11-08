@@ -1,0 +1,61 @@
+<div ng-controller="chatcontroller" class="container">
+     
+   
+      <div style="border: solid 1px blue;  " >
+      <div ng-repeat="message in messages | orderBy:'time':reverse" class="message">
+      <div  ng-show="message.id===currentUser.name">
+  <table>
+    <tr>
+    	<td style="width:50px">
+          <img  src="resources\images\{{currentUser.imagepath}}" height="35" width="35" alt="Image" class="img-rounded img-responsive"/>
+        </td>
+        
+        <td style="width:50px">
+          <time>{{message.time | date:'HH:mm'}}</time>
+        </td>
+        
+        <td>
+          <span ng-class="{self: message.self}"><b>ME:</b>  {{message.message}}</span>
+        </td>
+    </tr>
+  </table>
+        </div>
+        
+        
+        <div ng-if="message.id!=currentUser.name" ng-show="message.id!=currentUser.name" ng-controller="userController as u" ng-init="u.getuserByName(message.id)">
+        
+        
+ <table>
+    <tr>
+       <td style="width:50px">
+          <img  src="resources\images\{{friendp.imagepath}}" height="35" width="35" alt="Image" class="img-rounded img-responsive"/>
+       </td>
+       
+       <td style="width:50px">
+          <time>{{message.time | date:'HH:mm'}}</time>
+       </td>
+      
+       <td>
+        <span ng-class="{self: message.self}"><b>{{message.id}}:</b>  {{message.message}}</span>
+       </td>
+    </tr>
+ </table>
+        </div>
+       <br/> <br/>
+      </div>
+      </div>
+      <div></div>
+      <br/><br/><br/>
+         <div >
+         
+       <form ng-submit="addMessage()" name="messageForm">
+       <div>
+        <input class="form-control" style="width: 50%" type="text" placeholder="Compose a new message..." ng-model="message" />
+        <div class="info">
+          <span class="count" ng-bind="max - message.length" ng-class="{danger: message.length > max}">140</span>
+          <button class="btn btn-success" ng-disabled="message.length > max || message.length === 0">Send</button>
+        </div>
+        </div>
+      </form>
+      </div>
+    </div>

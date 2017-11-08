@@ -1,0 +1,12 @@
+<div ng-controller="friendController as fCtrl" ng-init="fCtrl.getrecreq()" class="container">
+<h1>Received Requests</h1>
+<table class="table table-hover">
+    <tbody ng-controller="userController as uCtrl">
+      <tr ng-repeat="a in recreq" ng-init="uCtrl.getuser(a.userid)">
+      	<td><img src="resources\images\{{selectedUser.imagepath}}" height="150" width="80" alt="Image" class="img-rounded img-responsive"/></td>
+      	<td>{{selectedUser.name}}</td>
+      	<td><a href="" ng-click="fCtrl.acceptreq(selectedUser.id)">Accept Request</a></td>
+      </tr>
+    </tbody>
+  </table>
+</div>

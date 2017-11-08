@@ -1,0 +1,84 @@
+<div class="container" ng-controller="userController as uctrl"  >            
+<table class="table table-bordered" ng-init="uctrl.getUserById(selectedBlog.userid)"  >
+<tr>
+        <td>Blog Title</td>
+	   	<td>Blog Author</td>
+        <td>Blog Creation Date</td>
+        <td>Blog Description</td>
+</tr>
+           <tr  >
+  
+              <td >
+              {{selectedBlog.title}} 
+              </td>
+              
+              <td  >
+               <img  src="resources\images\{{selectedusr.imagepath}}" height="25" width="25" alt="Image" class="img-rounded img-responsive"/>
+               {{selectedusr.name}}
+              </td>
+              
+              <td >
+              {{selectedBlog.date_added | date:'dd/MM/yyyy hh:mm'}}
+              </td>
+              
+               <td >
+              {{selectedBlog.description}}
+              </td>
+              </tr>  
+        </table> 
+      
+<div class="container"  ng-controller="blogController as bctrl"  >
+      
+        <!----comment form ---->
+                
+	                <div class="well"  ng-show="currentUser"  >
+	                    <h4>Leave a Comment:</h4>`		
+	                    <form ng-submit="bctrl.saveBlogComment()" >
+	                        <div class="form-group">
+	                            <textarea class="form-control" rows="3" ng-model="blogComment.comment" name="comment"></textarea>
+	                           
+	                        </div>
+	                        <button type="submit" class="btn btn-primary">Submit</button>
+	                    </form>
+	                </div>     
+	                         
+                
+                 
+                	<div  ng-hide="currentUser">
+                	
+	                	<p class="pull-right"><a href="#!login">Login | Sign Up</a> to comment!</p>
+                	
+               		</div>
+               		
+               		
+<div   ng-init="bctrl.getAllBlogComment(selectedBlog.id)">            
+					 <table class="table" ng-init="uctrl.getAllUser()"  >
+					  <tr>
+                        <td><b>Comments</b></td>
+    				  </tr>
+    				  <tbody  ng-repeat="blogComment in selectedBlogComment"   >
+    				  <tr   >
+    				  <td > 
+    				  <div ng-repeat="userp in users" ng-if="userp.id==blogComment.userid">
+    				    <img  src="resources\images\{{userp.imagepath}}" height="50" width="50" alt="Image" class="img-rounded img-responsive"/>
+    				   <b> {{userp.name}} </b>
+    				   </div>
+    				  </td>
+              			<td   >
+              			{{blogComment.userid}}
+              			 {{blogComment.comment}}  
+              			</td>
+              			<td>
+              			<i>  {{blogComment.date_added | date:'dd/MM/yyyy hh:mm'}}</i>
+              			</td>
+              			<td ng-show="blogComment.userid==currentUser.id">
+              				<a href="" ng-click="bctrl.deleteComment(blogComment.id)" class="button btn-primary">Delete</a>
+              			</td>
+  					</tr>
+  					</tbody>
+  					</table>
+  					</div>   
+  	
+  	</div>
+  	
+  					</div>

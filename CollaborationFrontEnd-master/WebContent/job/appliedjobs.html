@@ -1,0 +1,24 @@
+<div ng-controller="jobController as jctrl" ng-init="jctrl.getAppliedJobs(currentUser.id)" class="container">
+<h1> Applied Jobs</h1>
+<table class="table table-bordered" ng-init="jctrl.getAllJobs()">
+    <thead>
+      <tr>
+        <th>Job title:</th>
+        <th>Status:</th>
+        <th>Reason:</th>
+        <th>Applied Job Date:</th>
+       
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="a in appliedjobs"  >
+      	<td  ><div ng-repeat="jobp in jobs" ng-if="jobp.id==a.jobid" >{{jobp.jobtitle}}</div></td>
+      	<td><div ng-if="a.status=='P'">Pending</div>
+      		<div ng-if="a.status=='A'">Accepted</div>
+      		<div ng-if="a.status=='R'">Rejected</div>
+      	</td>
+      	<td>{{a.reason}}</td>
+      	<td>{{a.applieddate | date:'dd/MM/yyyy'}}</td>
+    </tbody>
+  </table>
+</div>
